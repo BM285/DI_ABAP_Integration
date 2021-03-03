@@ -43,10 +43,17 @@ The relevant tables for our scenario are
 Here is how these tables relate to each other:<br>
 ![](images/epm-001b.JPG)<br><br>
 
-## Workshop scenarios
+## Exercise scenarios
+
+The main use cases behind this workshop are
+- The extraction the Business Partner master data in S/4HANA's demo application **Enterprise Procurement Model (EPM)** and making the records available for the corporate Data Analysts in an S3 object store.
+- Then also persist the transactional data in S3, i.e for EPM Sales Order objects which are built from joins over multiple EPM tables.
+- In both cases, any single change of these data sources in the S/4HANA system has to be instantly and automatically replicated to the related files in S3.
+- Additionally, the Sales Order data have to be enriched with Customer master data, for the initial load and then on every change committed to the EPM Sales Order data in S/4HANA.
+- In order to create test changes on the EPM Sales Order data without accessing the SAP GUI in the S/4HANA system, (a variant of) the EPM Data Generator reports can be executed as an ABAP Function Modul call from a Data Intelligence Pipeline.<br>
 
 Here is a graphical overview about the topics and processes that we will focus on during this hands-on workshop and how they relate to each other.<br><br>
-![](DAT262_Workshop_Scenarios.JPG)<br><br>
+![](../DAT262_Workshop_Scenarios.JPG)<br><br>
 
 ## Access to the exercises' Data Intelligence environment
 
