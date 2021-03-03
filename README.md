@@ -24,18 +24,6 @@ The requirements to follow the exercises in this repository are:
 - Locally installed Eclipse IDE with ABAP Development Tools (ADT) and training S/4HANA resource connected
 - Locally installed SAP Logon App and SAP GUI
 
-## Deep Dive Demos and Hands-On Exercises
-
-<!--
-Provide the exercise content here directly in README.md using [markdown](https://guides.github.com/features/mastering-markdown/) and linking to the specific exercise pages, below is an example.
--->
-
-The main use cases behind this workshop are
-- The extraction the Business Partner master data in S/4HANA's demo application **Enterprise Procurement Model (EPM)** and making the records available for the corporate Data Analysts in an S3 object store.
-- Also persist the transactional data in S3, i.e for EPM Sales Order objects which are built from joins over multiple EPM tables.
-- In both cases, any single change of these data sources in the S/4HANA system has to be instantly and automatically replicated to the related files in S3.
-- Additionally, the Sales Order data have to be enriched with Customer master data, for the initial load and then on every change committed to the EPM Sales Order data in S/4HANA.
-- In order to create test changes on the EPM Sales Order data without accessing the SAP GUI in the S/4HANA system, (a variant of) the EPM Data Generator reports can be executed as an ABAP Function Modul call from a Data Intelligence Pipeline.<br><br>
 
 ### Agenda
 
