@@ -85,7 +85,7 @@ then ![](/exercises/dd1/images/1-008b.JPG))<br><br>
 
 We have now successfully created the first simple CDS View in SAP S/4HANA. In the next step we'll enable it for extraction and delta processing based on CDC.
 
-## Exercise 1.2 - Delta-enablement for simple ABAP CDS Views
+## Exercise 1.2 - Extraction and Delta enablement for simple ABAP CDS Views
 
 Extraction and Delta enablement for simple ABAP CDS Views is pretty easy! The only step to do is adding the `@Analytics` annotation to the view that sets the enabled flag and the change data capture approach.<br>
 
@@ -111,23 +111,180 @@ That's it! In this simple case, the framework can derive the relation between th
 
 ## Exercise 1.3 - Creating a more complex ABAP CDS View in ADT (joining multiple tables)
 
-## Exercise 1.4 - Delta-enablement for a complex ABAP CDS Views (joining multiple tables)
+In this part of the Exercise we'll be creating a more complex ABAP CDS View, again using the ABAP Development Tools (ADT). We will implement an ABAP CDS View which will join the EPM tables `SNWD_SO`, `SNWD_SO_I`, `SNWD_PD`, and `SNWD_TEXTS` in order to fetch all Sales Order relevant data, including its positions, products, and product names.<br>
+
+(As a reminder: The entity relationsships of the tables can be found [here](../ex0#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana).)<br><br>
+
+In a later step, also this ABAP CDS View will be enabled for Extraction and Change Data Capturing (CDC) for an event based processing of Sales Order related deltas to the target storage in S3.<br><br>
+
+Again, the object names in the screenshots may be different from the names proposed in the text. Please follow the text based instructions.<br><br>
+
+1. Create a CDS View
+In the context menu of your package choose ***New*** and then choose ***Other ABAP Repository Object***.<br><br>
+![](/exercises/dd1/images/1-001a.JPG)
+
+2. Select ***Data Definition***, then choose ***Next***.<br><br>
+![](/exercises/dd1/images/1-002a.JPG)
+
+3. Enter the following values, then choose Next.
+- Name, e.g. ```Z_CDS_EPM_SO_TA99``` (use your individual workshop user after the last underscore)
+- Description: **CDS View for EPM Sales Order object extraction**
+- Referenced Object: **SNWD_SO**<br><br>
+![](/exercises/dd1/images/dd1-012a.JPG)
+
+4. Accept the default transport request (local) by simply choosing ***Next*** again.<br><br>
+![](/exercises/dd1/images/1-004a.JPG)
+
+5. Select the entry ***Define View***, then choose ***Finish***.<br><br>
+![](/exercises/dd1/images/1-005a.JPG)
+
+6. The new view appears in an editor, with an error showing up because of the still missing SQL View name.<br>
+In this editor, enter value for the SQL View name in the annotation **`@AbapCatalog.sqlViewName`**, e.g. **`ZSQL_SO_TA99`**.<br>
+The SQL view name is the internal/technical name of the view which will be created in the database. 
+**`Z_CDS_EPM_SO_TA99`** is the name of the CDS view which provides enhanced view-building capabilities in ABAP. 
+You should always use the CDS view name in your ABAP applications.<br><br>
+The pre-defined data source plus its fields have automatically been added to the view definition because of the reference to the data source object we gave in step 3.
+If you haven't provided that value before, you can easily search for and add your data source using the keyboard shortcut ***CTRL+SPACE***.<br><br>
+![](/exercises/dd1/images/dd1-013a.JPG)
+
+7.	Delete the not needed fields in the SELECT statement, add the annotation ```@ClientHandling.type: #CLIENT_DEPENDENT``` and beautify the view a bit.<br><br>
+![](/exercises/dd1/images/dd1-014a.JPG)<br><br>
+
+8. For joining the EPM Sales Order Header table (`SNWD_SO`) with other related EPM tables (Sales Order Item: `SNWD_SO_I`, Product:`SNWD_PD`, Text (e.g. product names):`SNWD_TEXTS`), we can follow two different approaches.<br>
+   - **JOINS**, according to classical SQL concepts and always fully executing this join condition whenever the CDS View is triggered.
+     An example would be<br>```select from SNWD_SO as so left outer join SNWD_SO_I as item on so.node_key = item.parent_key```.
+   - **ASSOCIATIONS**, which are a CDS View specific kind of joins. They can obtain data from the involved tables on Join conditions but the data is only fetched if required. For example, your CDS view has 4 Associations configured and user is fetching data for only 2 tables, the ASSOICATION on other 2 tables will not be triggered. This may save workload and may increase the query performance.<br> An example for a similar join condition with associations would be<br>```select from SNWD_SO as so association [0..1] to SNWD_SO_I as item	on so.node_key = item.parent_key```
+   
+   In our specific case, we always need to fetch data from all involved tables. Hence, we choose the classical JOIN for this example and include the following lines:<br>
+   ...
+   ```abap
+   left outer join snwd_so_i as item on so.node_key = item.parent_key
+   left outer join snwd_pd as prod on item.product_guid = prod.node_key
+   left outer join snwd_texts as text on prod.name_guid = text.parent_key and text.language = 'E'
+   ```
+   ...<br><br>
+   ![](/exercises/dd1/images/dd1-014b.JPG)<br><br>
+
+9.	Add the wanted fields from the other tables in the join condition (and don't forget to make all key fields of all involved tables elements of the ABAP CDS View).<br><br>
+   ![](/exercises/dd1/images/dd1-015a.JPG)<br><br>
+   The ABAP CDS View may now look as follows:
+     ```abap
+     @AbapCatalog.sqlViewName: 'Z_SQL_EPM_SO'
+     @AbapCatalog.compiler.compareFilter: true
+     @AbapCatalog.preserveKey: true
+     @ClientHandling.type: #CLIENT_DEPENDENT
+     @AccessControl.authorizationCheck: #CHECK
+     @EndUserText.label: 'CDS View for EPM Sales Order object extraction'
+     
+     define view Z_CDS_EPM_SO as select from snwd_so as so
+         left outer join snwd_so_i as item on so.node_key = item.parent_key
+         left outer join snwd_pd as prod on item.product_guid = prod.node_key
+         left outer join snwd_texts as text on prod.name_guid = text.parent_key and text.language = 'E'
+     {
+         key item.node_key       as ItemGuid,
+         so.node_key             as SalesOrderGuid,
+         so.so_id                as SalesOrderId,
+         so.created_at           as CreatedAt,
+         so.changed_at           as ChangedAt,
+         so.buyer_guid           as BuyerGuid,
+         so.currency_code        as CurrencyCode,
+         so.gross_amount         as GrossAmount,
+         so.net_amount           as NetAmount,
+         so.tax_amount           as TaxAmount,
+         item.so_item_pos        as ItemPosition,
+         prod.product_id         as ProductID,
+         text.text               as ProductName,   
+         prod.category           as ProductCategory,
+         item.gross_amount       as ItemGrossAmount,
+         item.net_amount         as ItemNetAmount,
+         item.tax_amount         as ItemTaxAmount,
+         prod.node_key           as ProductGuid,
+         text.node_key           as TextGuid
+     }
+     ```
+
+10. ***Save*** (CTRL+S or ![](/exercises/dd1/images/1-008a.JPG)) and ***Activate*** (CTRL+F3 or ![](/exercises/dd1/images/1-008b.JPG)) the CDS View.<br><br>
+
+11. Verify the results in the ***Data Preview*** by pressing ***F8***. Our CDS View data preview should look like this:<br><br>
+![](/exercises/dd1/images/dd1-016a.JPG)<br><br>
+
+## Exercise 1.4 - Extraction and Delta enablement for a complex ABAP CDS Views (joining multiple tables)
+
+The main task for exposing a CDS view with CDC delta method is to provide the mapping information between the fields of a CDS view and the key fields of the underlying tables. The mapping is necessary to enable a comprehensive logging for each of the underlying tables and subsequently a consistent selection/(re-)construction of records to be provided for extraction. This means the framework needs to know which tables to log, i.e. monitor for record changes.
+
+Given one record changes in possibly only one of the underlying tables, the framework needs to determine which record/s are affected by this change in all other underlying tables and need to provide a consistent set of delta records.
+
+All key fields of the main table and all foreign key fields used by all on-conditions of the involved join(s) need to be exposed as elements in the CDS views.
+
+The first step is to identify the tables participating in the join and its roles in the join. Currently only Left-outer-to-One joins are supported by the CDC framework. These are the common CDS views with one or more joins based on one main table. Columns from other (outer) tables are added as left outer to one join, e.g. join from an item to a header table.
+
+Given there are no restrictions applied to the CDS view, the number of records of the CDS view constitute the number of records of the main table. All records from the main table are visible in the CDS view. Deletions of a record with regards to this CDS view only happen, if the record in the main table is deleted.
+
+Secondly the developer needs to provide the mapping between the key fields of the underlying tables and their exposure as elements in the CDS view. Please check the following figure in which you see the representation of all underlying key fields surfacing in the CDS view.<br>
+
+![](/exercises/dd1/images/dd1-017a.JPG)<br><br>
+***Source:*** [CDS based data extraction – Part II Delta Handling](https://blogs.sap.com/2019/12/16/cds-based-data-extraction-part-ii-delta-handling/) (an excellent blog by Simon Kranig).<br><br>
+
+In case of our EPM tables, we only need to consider one key field per table, which is the field `node_key` in all cases.
+For mapping the key fields of all underlying tables to the fields of the CDS view, we use the annotation `Analytics.dataExtraction.delta.changeDataCapture.mapping`. This implies the requirement to make the key fields of all tables in the join condition elements of the ABAP CDS View.<br><br>
+
+1. Include the following code under the list of existing annotations:
+   ```abap
+   @Analytics:{
+       dataCategory: #FACT,
+       dataExtraction: {
+           enabled: true,
+           delta.changeDataCapture: {
+               mapping:
+               [{table: 'SNWD_SO',
+                 role: #MAIN,
+                 viewElement: ['SalesOrderGuid'],
+                 tableElement: ['node_key']
+                },
+                {table: 'SNWD_SO_I',
+                 role: #LEFT_OUTER_TO_ONE_JOIN,
+                 viewElement: ['ItemGuid'],
+                 tableElement: ['node_key']
+                },
+                {table: 'SNWD_PD',
+                 role: #LEFT_OUTER_TO_ONE_JOIN,
+                 viewElement: ['ProductGuid'],
+                 tableElement: ['node_key']
+                },
+                {table: 'SNWD_TEXTS',
+                 role: #LEFT_OUTER_TO_ONE_JOIN,
+                 viewElement: ['TextGuid'],
+                 tableElement: ['node_key']
+                }
+               ]
+          }
+       }
+   }
+   ```
+   ![](/exercises/dd1/images/dd1-018a.JPG)<br><br>
+
+2. ***Save*** (CTRL+S or ![](/exercises/dd1/images/1-008a.JPG)) and ***Activate*** (CTRL+F3 or ![](/exercises/dd1/images/1-008b.JPG)) the CDS View.<br><br>
+
+3. Verify the results in the ***Data Preview*** by pressing ***F8***. The ABAP CDS View should still provide the same data as before delta-enabling.<br><br>
+
+We have now enabled our Sales Order object CDS View for Change Data Capture and are able to obtain any delta from one of the involved tables.<br>
+
+In the next session, we test the Initial Load and Delta Load capabilities with a small, exemplary Data Intelligence Pipeline implementation.
 
 In the following exercise sections, we will now leverage the new ABAP CDS Views as a source for data processing in Data Intelligence Pipelines.<br><br>
 
 ## Exercise 1.5 - Consuming the EPM Business Partner ABAP CDS Views in SAP Data Intelligence
 
-
-The use case is
-- to obtain the Business Partner master data in S/4HANA's demo application **Enterprise Procurement Model (EPM)** and make the records available for the corporate Data Analysts in an S3 object store.
-- to also persist the transactional data for EPM Sales Orders in S3.
+The next steps will comprise
+- obtaining the Business Partner master data in S/4HANA's demo application **Enterprise Procurement Model (EPM)** and make the records available for the corporate Data Analysts in an S3 object store.
+- also persisting the transactional data for EPM Sales Orders in S3.
 - In both cases, any single change of these data sources in the S/4HANA system has to be instantly and automatically replicated to the related files in S3 in append mode.
 - Additionally, the Sales Order data have to be enriched with Customer master data. For the initial load and then on every change committed to the EPM Sales Order data in S/4HANA.
 
 (As a reminder: You can recap the relationship between the relevant EPM table entities that are used in this exercise [here](../ex0#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana))<br>
 
-
-After completing these steps you will have created a Pipeline that reads EPM Customer data from an ABAP CDS View in S/4HANA and displays it in a Terminal UI.
+After completing these steps you will have created a Pipeline that reads EPM Customer data from an ABAP CDS View in S/4HANA and displays it in a Terminal UI.<br>
+For the integration of ABAP CDS Views of S/4HANA, SAP Data Intelligence provides standard ABAP operator shells that can easily be configured according to your use cases.<br><br>
 
 1. Log on to SAP Data Intelligence and enter the Launchpad application. Then start the ***Modeler*** application.
    - Follow the link to your assigned Data Intelligence instance, i.e. https://vsystem.ingress.dh-6srbrjhsl.dh-canary.shoot.live.k8s-hana.ondemand.com/login/?tenant=dat262.
