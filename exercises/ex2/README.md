@@ -274,7 +274,7 @@ Then ***Save*** the Pipeline.<br><br>
 We've now successfully implemented a custom ABAP Operator in S/4HANA and consumed it from a Data Intelligence Pipeline.
 <br><br>
 
-## Exercise 2.3 - Triggering the execution of a report variant in a remote S/4HANA system out of a Data Intelligence Pipeline
+## Exercise 2.3 - Making use of custom ABAP Operators in SAP Data Intelligence for ABAP report execution
 
 So far, we have missed to proof whether or not our ABAP CDS Views and the consuming Data Intelligence Pipelines are really providing delta information. This would require access to the S/4HANA system in order to conduct changes on the data basis, hence on the EPM Business Partner table or on the EPM Sales Order object.
 
@@ -308,7 +308,7 @@ After completing these steps you will have created a Pipeline that triggers the 
 
 1. Log on to SAP Data Intelligence and enter the Launchpad application. Then start the ***Modeler*** application.
    - Follow the link to your assigned Data Intelligence instance, e.g. https://vsystem.ingress.xyz.dhaas-live.shoot.live.k8s-hana.ondemand.com/app/datahub-app-launchpad/.
-   - The tenant name should be **"dat262"**.
+   - The tenant name is **"workshop"**.
    - In the next pop-up window, enter your assigned user name (e.g. ***"TA99"***) and your individual password received from the DI user registration.<br><br>
    ![](/exercises/ex2/images/ex1-002c.JPG)<br><br>
    - From the Launchpad, start the ***Modeler*** application by clicking on the corresponding tile.<br><br>
@@ -346,7 +346,7 @@ With this Pipeline setup, we can - from the Terminal UI - trigger the ABAP Opera
 In the next section, you can leverage this remote data generation option to verify the delta capabilities of our previously built Pipelines for ABAP CDS View based data replication.<br><br>
 
 
-## Exercise 2.2 - Using a custom ABAP Operator to verify your Delta Replication of EPM Sales Orders
+## Exercise 2.4 - Triggering a custom ABAP Operator to verify your Delta Replication of EPM Sales Orders
 
 You can now test the delta processing capabilities of the ABAP CDS View based data extraction. A nice task would be to check if Pipeline for Sales Orders replications and enrichment that you have built in [Exercise 1.8 - Extend the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3](../ex1#exercise-13---implement-a-pipeline-for-delta-transfer-of-enhanced-epm-sales-order-data-from-s4hana-to-an-s3-object-store) is really processing the delta records from EPM in S/4HANA.<br><br>
 
@@ -393,7 +393,7 @@ You can now test the delta processing capabilities of the ABAP CDS View based da
 
 ## Summary
 
-In the Deep Dive demos and in the Exercises, we have jointly worked on the implementation of delta-enabled data sources and remote functionality in S/4HANA and have leveraged these features directly in SAP Data Intelligence. We could now extend these use cases for more complex scenarios. The general implementation approaches and the support that the Data Intelligence applications provide would then still be the same.<br>
+In the  Exercises, we have worked on the implementation of delta-enabled data sources and remote functionality in S/4HANA and have leveraged these features directly in SAP Data Intelligence. We could now extend these use cases for more complex scenarios. The general implementation approaches and the support that the Data Intelligence applications provide would then still be the same.<br>
 
 In case you have asked yourself if there are similar options for the integration with other ABAP systems such as ECC or BW, the answer is 'yes'! In these cases, you can make use of the unmodifying DMIS add-on, which provides the ABAP Pipeline Engine also for these systems.<br>
 
@@ -401,9 +401,9 @@ This given, you can realize real-time replication scenarios via SLT integration 
 
 More information can be found [here](https://blogs.sap.com/2019/10/29/abap-integration-for-sap-data-hub-and-sap-data-intelligence-overview-blog/).<br><br>
 
-**THANK YOU VERY MUCH** for having participated in this Deep Dive and Hands On workshop. We hope you have enjoyed it!
+**THANK YOU VERY MUCH** for having participated in this Hands On workshop. We hope you have enjoyed it!
 
-Bengt Mertens and Tobias Koebler<br><br>
+Bengt Mertens and Tobias Karpstein<br><br>
 
 **************************************************
 
