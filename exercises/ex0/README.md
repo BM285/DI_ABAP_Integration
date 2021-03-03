@@ -48,7 +48,8 @@ The main use cases behind this workshop are
 - In order to create test changes on the EPM Sales Order data without accessing the SAP GUI in the S/4HANA system, (a variant of) the EPM Data Generator reports can be executed as an ABAP Function Modul call from a Data Intelligence Pipeline.<br>
 
 Here is a graphical overview about the topics and processes that we will focus on during this hands-on workshop and how they relate to each other.<br><br>
-![]((images/DAT262_Workshop_Scenarios.JPG)<br><br>
+![](images/Workshop_Scenarios_small.JPG)<br><br>
+
 
 ## Access to the exercises' Data Intelligence environment
 
