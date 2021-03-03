@@ -43,6 +43,11 @@ The relevant tables for our scenario are
 Here is how these tables relate to each other:<br>
 ![](images/epm-001b.JPG)<br><br>
 
+## Workshop scenarios
+
+Here is a graphical overview about the topics and processes that we will focus on during this hands-on workshop and how they relate to each other.<br><br>
+![](DAT262_Workshop_Scenarios.JPG)<br><br>
+
 ## Access to the exercises' Data Intelligence environment
 
 All participants are requested to register for a **individual user name and password** on the workshop specific **SAP Data Intelligence tenant**.<br>
