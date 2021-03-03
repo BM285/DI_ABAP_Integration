@@ -78,7 +78,7 @@ After you have now made yourself familiar with
 - the Enterprise Procurement Model (EPM) as the data basis for our Deep Dive demos and Exercises,
 - and your credentials and the approach for accessing SAP Data Intelligence
 
-please listen to the introductional demos and then proceed to **[Exercise 1 - ABAP CDS View based data extraction in SAP Data Intelligence](../dd1/README.md)**.
+please listen to the introductional demos and then proceed to **[Exercise 1 - ABAP CDS View based data extraction in SAP Data Intelligence](../ex1/README.md#exercise-1---replicating-data-from-abap-cds-views-in-sap-data-intelligence)**.
 <br><br>
 
 
