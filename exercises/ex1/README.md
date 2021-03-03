@@ -13,10 +13,101 @@ Those who are interesed in more information about Change Data Capture for ABAP C
 
 ## Exercise 1.1 - Create a simple ABAP CDS View in ABAP Develoment Tools (ADT)
 
-After having completed the steps in the first (ABAP) part  we will have created two new delta-enabled custom ABAP CDS Views on our SAP S/4HANA system. Our goal is to leverage these CDS Views later on to access the Customer and Sales Order data of the Enterprise Procurement Model (our demo dataset) from Pipelines in SAP Data Intelligence.<br><br>
+After having completed the steps in the first (ABAP) part we will have created two new delta-enabled custom ABAP CDS Views on our SAP S/4HANA system. Our goal is to leverage these CDS Views later on to access the Customer and Sales Order data of the Enterprise Procurement Model (our demo dataset) from Pipelines in SAP Data Intelligence.<br><br>
 
+We are now going to create a CDS (Core Data Services) View using ABAP Development Tools (ADT). In our specific case, it will be a CDS View to access data of the EPM table SNWD_BPA, which contains the Business Partner record set. The object names in the screenshots may be different from the names proposed in the text. Please follow the text based instructions.
+
+1. Create a CDS View
+In the context menu of your package choose ***New*** and then choose ***Other ABAP Repository Object***.<br><br>
+![](/exercises/dd1/images/1-001a.JPG)
+
+2.	Select ***Data Definition***, then choose ***Next***.<br><br>
+![](/exercises/dd1/images/1-002a.JPG)
+
+3. Enter the following values, then choose Next.
+- Name ```Z_CDS_EPM_BUPA_TAxx``` (where TAxx is you workshop user name, e.g. Z_CDS_EPM_BUPA_TA99)
+- Description: **CDS View for EPM Business Partner Extraction**
+- Referenced Object: **SNWD_BPA**<br><br>
+![](/exercises/dd1/images/1-003a.JPG)
+
+4.	Accept the default transport request (local) by simply choosing ***Next*** again.<br><br>
+![](/exercises/dd1/images/1-004a.JPG)
+
+5.	Select the entry ***Define View***, then choose ***Finish***.<br><br>
+![](/exercises/dd1/images/1-005a.JPG)
+
+6.	The new view appears in an editor, with an error showing up because of the still missing SQL View name.<br>
+In this editor, enter value for the SQL View name in the annotation **`@AbapCatalog.sqlViewName`**, e.g. **`ZSQL_BUPA_TA99`**.<br>
+The SQL view name is the internal/technical name of the view which will be created in the database.<br>
+**`ZSQL_BUPA_TA99`** is the name of the CDS view which provides enhanced view-building capabilities in ABAP. 
+You should always use the CDS view name in your ABAP applications.<br><br>
+The data source plus its fields have automatically been added to the view definition because of the reference to the data source object we gave in step 3.
+If you haven't provided that value before, you can easily search for and add your data source using the keyboard shortcut ***CTRL+SPACE***.<br><br>
+![](/exercises/dd1/images/1-006a.JPG)
+
+7.	Delete the not needed fields in the SELECT statement, add the annotation ```@ClientHandling.type: #CLIENT_DEPENDENT``` and beautify the view.<br><br>
+   ![](/exercises/dd1/images/1-007a.JPG)<br><br>
+   The code may now look as follows:
+     ```abap
+     @AbapCatalog.sqlViewName: 'Z_SQL_EPM_BUPA'
+     @AbapCatalog.compiler.compareFilter: true
+     @AbapCatalog.preserveKey: true
+     @ClientHandling.type: #CLIENT_DEPENDENT
+     @AccessControl.authorizationCheck: #CHECK
+     @EndUserText.label: 'CDS View for EPM Business Partner Extraction'
+     
+     define view Z_CDS_EPM_BUPA
+         as select from SNWD_BPA
+         
+     {
+         key node_key as NodeKey,
+             bp_role as BpRole,
+             email_address as EmailAddress,
+             phone_number as PhoneNumber,
+             fax_number as FaxNumber,
+             web_address as WebAddress,
+             address_guid as AddressGuid,
+             bp_id as BpId,
+             company_name as CompanyName,
+             legal_form as LegalForm,
+             created_at as CreatedAt,
+             changed_at as ChangedAt,
+             currency_code as CurrencyCode
+     }
+     ```
+
+8.	***Save (CTRL+S or disk symbol in menue bar)*** and ***Activate (CTRL+F3 or magic wand symbol in menue bar)*** the CDS View.<br>
+(first ![](/exercises/dd1/images/1-008a.JPG) 
+then ![](/exercises/dd1/images/1-008b.JPG))<br><br>
+
+9.	We are now able to verify the results in the ***Data Preview*** by choosing ***F8***. Our CDS View data preview should look like this:<br><br>
+![](/exercises/dd1/images/1-009a.JPG)<br><br>
+
+We have now successfully created the first simple CDS View in SAP S/4HANA. In the next step we'll enable it for extraction and delta processing based on CDC.
 
 ## Exercise 1.2 - Delta-enablement for simple ABAP CDS Views
+
+Extraction and Delta enablement for simple ABAP CDS Views is pretty easy! The only step to do is adding the `@Analytics` annotation to the view that sets the enabled flag and the change data capture approach.<br>
+
+Let's continue with the simple ABAP CDS View that we have implemented in the previous section and introduce the CDC delta for **`Z_CDS_EPM_BUPA`**.<br><br>
+
+1. In ADT's Project Explorer, we navigate to our package and then to ***Core Data Services --> Data Definitions*** and double-click on the ABAP CDS View `Z_CDS_EPM_BUPA`.<br><br>
+![](/exercises/dd1/images/dd1-010a.JPG)<br><br>
+
+2. Under the existing list of annotations, enter the following lines:
+   ```abap
+   @Analytics:{
+       dataExtraction: {
+           enabled: true,
+           delta.changeDataCapture.automatic: true
+       }
+   }
+   ```
+   <br>![](/exercises/dd1/images/dd1-011a.JPG)<br><br>
+
+3. ***Save*** (CTRL+S or ![](/exercises/dd1/images/1-008a.JPG)) and ***Activate*** (CTRL+F3 or ![](/exercises/dd1/images/1-008b.JPG)) the CDS View.<br><br>
+
+That's it! In this simple case, the framework can derive the relation between the fields of the ABAP CDS View and key fields of the underlying table itself. Whenever a record is inserted, updated or deleted in the underlying table, a record with the respective table key is stored in a generated logging table.<br><br>
 
 ## Exercise 1.3 - Creating a more complex ABAP CDS View in ADT (joining multiple tables)
 
