@@ -377,7 +377,7 @@ Now connect the **output port of the ABAP CDS Reader** with the **input port of 
    - Label: **`Customer Master to S3`**
    - Connection: Choose type ***Connection Management*** and then the connection ID **`TechEd2020_S3`**
    - Path mode: **`Static (from configuration)`**
-   - Path: **`/DAT262/XXXX/Customer_Master.csv`**, where XXXX is your User name, for example "/DAT262/TA99/Customer_Master.csv"
+   - Path: **`/XXXX/Customer_Master.csv`**, where XXXX is your User name, for example "/TA99/Customer_Master.csv"
    - Mode: **`Append`**
    - Join batches: **`True`**<br><br>
 ![](/exercises/ex1/images/ex1-024b.JPG)<br><br>
@@ -403,7 +403,7 @@ Now connect the **output port of the ABAP CDS Reader** with the **input port of 
 13. In order to easily find our connection to the target S3 Object Store, you may leverage the search functionality. Enter `TechEd` into the search field and click on the spyclass icon. Click on the **`TechEd2020_S3`** tile.<br><br>
 ![](/exercises/ex1/images/ex1-031b.JPG)<br><br>
 
-14. On the next drill-down view, click on the **`DAT262`** directory that you had specified in the ***Write File*** operator, and then drill down to your specific User directory, for example **`TA99`**.<br><br>
+14. On the next drill-down view, click on the directory that you had specified in the ***Write File*** operator, and then drill down to your specific User directory, for example **`TA99`**.<br><br>
 ![](/exercises/ex1/images/ex1-032b.JPG)<br><br>
 
 15. If your Pipeline ran successfully, you'll find a file with your specified name (`Customer_Master.csv`) Open the ***More Actions*** menue and select ***View Fact Sheet***.<br><br>
@@ -475,7 +475,7 @@ In the next section, we'll also take care for the Sales Order transaction data f
    - Label: **`Sales Order to S3`**
    - Connection: Choose type ***Connection Management*** and then the connection ID **`TechEd2020_S3`**
    - Path mode: **`Static (from configuration)`**
-   - Path: **`/DAT262/XXXX/Sales_Order.csv`**, where XXXX is your User name, for example "/DAT262/TA99/Sales_Order.csv"
+   - Path: **`/XXXX/Sales_Order.csv`**, where XXXX is your User name, for example "/TA99/Sales_Order.csv"
    - Mode: **`Append`**
    - Join batches: **`True`**<br><br>
 ![](/exercises/ex1/images/ex1-043b.JPG)<br><br>
@@ -506,7 +506,7 @@ In the next section, we'll also take care for the Sales Order transaction data f
 18. In order to easily find our connection to the target S3 Object Store, you may leverage the search functionality. Enter `TechEd` into the search field and click on the spyclass icon. Click on the **`TechEd2020_S3`** tile.<br><br>
 ![](/exercises/ex1/images/ex1-031b.JPG)<br><br>
 
-19. On the next drill-down view, click on the **`DAT262`** directory that you had specified in the ***Write File*** operator, and then drill down to your specific User directory, for example **`TA99`**.<br><br>
+19. On the next drill-down view, click on the directory that you had specified in the ***Write File*** operator, and then drill down to your specific User directory, for example **`TA99`**.<br><br>
 ![](/exercises/ex1/images/ex1-032b.JPG)<br><br>
 
 20. If your Pipeline ran successfully, you'll find a file with your specified name (`Sales_Order.csv`) Open the ***More Actions*** menue and select ***View Fact Sheet***.<br><br>
@@ -545,7 +545,7 @@ In this last part of the S/4HANA ABAP CDS View intergration exercise, you will e
 
 4. A new Pipeline has been created as a copy of your original Sales Order replication Pipeline. You will be using the File Operator outputs (i.e. the file path and name) as a trigger for the join processes with the Customer master data.<br><br>
 
-5. Open the configuration of the File Writer operator and enter the new target path/file name **`/DAT262/TA99/Sales_Order_Staging.csv`**. Change Mode to **`Overwrite`**. Then save the Pipeline.<br><br>
+5. Open the configuration of the File Writer operator and enter the new target path/file name **`/TA99/Sales_Order_Staging.csv`**. Change Mode to **`Overwrite`**. Then save the Pipeline.<br><br>
 ![](/exercises/ex1/images/ex1-055b.JPG)<br><br>
 
 6. Click on the ***Operators*** tab on the left side in order to get the list of operators. Find the ***Graph Terminator*** operator and drag it from the operator list into the canvas. Then connect the upper output port ("file") of the File Writer with the input port of the Graph Terminator operator.<br><br>
@@ -563,7 +563,7 @@ The Graph Terminanor allows us to run the Pipeline once, and when the new file g
    - Increase the **Fetch size** to `10000`
    - **Fail on string truncation** should be `False`<br><br>
      ![](/exercises/ex1/images/ex1-058b.JPG)<br><br>
-   - Then click the **S3 Source File** folder icon to browse through the S3 bucket. Drill down to your individual folder under **DAT262** and select the file **`Sales_Order_Staging`**. Then click ***OK***.<br><br>
+   - Then click the **S3 Source File** folder icon to browse through the S3 bucket. Drill down to your individual folder and select the file **`Sales_Order_Staging`**. Then click ***OK***.<br><br>
      ![](/exercises/ex1/images/ex1-060b.JPG)<br><br>
      
 10. You are now able to open the ***Data Preview*** of the connected file in S3. Give it a try, if you want!<br>
@@ -579,7 +579,7 @@ When you create the link between the operators, a conversion of the data type is
 A new copy of the operator is being included in the Pipeline canvas.<br><br>
 ![](/exercises/ex1/images/ex1-063b.JPG)<br><br>
 
-12. On this new operator, open the configuration panel and click the **S3 Source File** folder icon to browse through the S3 bucket. Drill down to your individual folder under **DAT262** and select the file **`Customer_Master.csv`**. Then click ***OK***..<br><br>
+12. On this new operator, open the configuration panel and click the **S3 Source File** folder icon to browse through the S3 bucket. Drill down to your individual folder and select the file **`Customer_Master.csv`**. Then click ***OK***..<br><br>
 ![](/exercises/ex1/images/ex1-064b.JPG)<br><br>
 ![](/exercises/ex1/images/ex1-065b.JPG)<br><br>
 
