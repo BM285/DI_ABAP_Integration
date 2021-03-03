@@ -353,7 +353,7 @@ For the integration of ABAP CDS Views of S/4HANA, SAP Data Intelligence provides
 **Congratulations!** You have now successfully implemented a Pipeline that consumes an ABAP CDS View from the connected SAP S/4HANA system.
 As a next step, you will persist the EPM Customer master data in an S3 Object Store and switch from the Initial Load to a Delta Load transfer mode.
 
-## Exercise 1.2 - Extend the Pipeline to transfer the Customer data into an S3 Object Store with Initial Load and Delta Load modes
+## Exercise 1.6 - Extend the Pipeline to transfer the Customer data into an S3 Object Store with Initial Load and Delta Load modes
 
 After completing the following steps you will have extended the Data Intelligence Pipeline with an additional persistency for the data in S3. And in order to also obtain any deltas that have occurred on the S/4HANA EPM Business Partner table `SNWD_BPA`, the transfer mode will get changed to Delta Load after initially loading the data into a file in S3.
 
@@ -434,7 +434,7 @@ In order to fetch any changes in S/4HANA on the Business Partner table `SNWD_BPA
 
 **Very well done!** You have implemented a Pipeline that extracts Initial Load and Delta data fron an ABAP CDS View in S/4HANA and have interlinked it with a non-SAP target storage in S3.
 
-## Exercise 1.3 - Implement a Pipeline for delta transfer of enhanced EPM Sales Order data from S/4HANA to an S3 Object Store
+## Exercise 1.7 - Implement a Pipeline for delta transfer of enhanced EPM Sales Order data from S/4HANA to an S3 Object Store
 
 In the next section, we'll also take care for the Sales Order transaction data from EPM and will right away establish a replication (initial load plus following delta processing) transfer mode.
 
@@ -526,7 +526,7 @@ In the next section, we'll also take care for the Sales Order transaction data f
 As a next step, you will enrich the Sales Order data with some Customer Details (Name and Legal Form) during the Replication process.
 
 
-## Exercise 1.4 - Extend the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3
+## Exercise 1.8 - Extend the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3
 
 In this last part of the S/4HANA ABAP CDS View intergration exercise, you will establish a Pipeline that replicated the Sales Order data from the delta-enabled ABA CDS View in S/4HANA and joins it with some of the details that you have replicated from the Customer master data, i.e. company name and legal form.
 
@@ -625,7 +625,7 @@ A new copy of the operator is being included in the Pipeline canvas.<br><br>
 26. Open the configuration panel of the ***Structured File Producer*** operator and enter the following parameters:<br>
     - **Storage Type**: `S3`
     - **S3 Configuration**: After clicking on the pencil icon, select `Configuration Manager`and as connection ID `TechEd2020_S3`
-    - **S3 file name:** `/DAT262/TA99/Enriched_Sales_Order.csv`
+    - **S3 file name:** `/TA99/Enriched_Sales_Order.csv`
     - **Format:** `CSV`
     - Leave the **CSV Properties** as-is
     - Increase **Batch size:** to `10000`
@@ -652,34 +652,4 @@ As a matter of fact, in this virtual workshop at TechEd, we can't provide access
 In the next exercise we will mitigate this problem and allow you to execute a variant of this ABAP Report, leveraging the ABAP Function Module calls from SAP Data Intelligence.
 Please continue to [Exercise 2 - Triggering the execution of a function module in a remote S/4HANA system](../ex2/README.md).
 
-<br><br>
-
-*****************************************************
-
-<br> **Table of Contents / Navigation**
-
-- **[Overview and Getting Started](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex0#overview-and-getting-started)**
-     - [Deep Dive demos vs. Exercises](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex0#deep-dive-vs-exercise-sections-in-this-document)
-     - [Short introduction to the Enterprise Procurement Model (EPM) in ABAP systems](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex0#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana)
-     - [Access to the exercises' Data Intelligence environment](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex0#access-to-the-exercises-data-intelligence-environment)
-
-- **[Deep Dive 1 - ABAP CDS View based data extraction in SAP Data Intelligence](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/dd1/)**
-    - [Deep Dive 1.1 - Create a simple ABAP CDS View in ABAP Develoment Tools (ADT)](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/dd1#deep-dive-11---create-a-simple-abap-cds-view-in-adt)
-    - [Deep Dive 1.2 - Delta-enablement for simple ABAP CDS Views](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/dd1#deep-dive-12---delta-enablement-for-simple-abap-cds-views)
-    - [Deep Dive 1.3 - Create a more complex ABAP CDS View in ADT (joining multiple tables)](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/dd1#deep-dive-13---create-a-more-complex-abap-cds-view-in-adt-joining-multiple-tables)
-    - [Deep Dive 1.4 - Delta-enablement for complex ABAP CDS Views (joining multiple tables)](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/dd1#deep-dive-14---delta-enablement-for-complex-abap-cds-views-joining-multiple-tables)
-    - [Deep Dive 1.5 - Integrate ABAP CDS Views in SAP Data Intelligence Pipelines](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/dd1#deep-dive-15---integrate-abap-cds-views-in-sap-data-intelligence-pipelines)
-    
-- **[Deep Dive 2 - Calling an ABAP function module in SAP S/4HANA from SAP Data Intelligence](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/dd2/)**
-    - [Deep Dive 2.1 - Create a custom ABAP Operator in SAP S/4HANA](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/dd2#deep-dive-21---create-a-custom-abap-operator-in-sap-s4hana)
-    - [Deep Dive 2.2 - Integrate the custom ABAP Operator in a SAP Data Intelligence Pipeline](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/dd2#deep-dive-22---integrate-the-custom-abap-operator-in-a-sap-data-intelligence-pipeline)
-    
-- **[Exercise 1 - Replicating data from S/4HANA ABAP CDS Views in SAP Data Intelligence](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex1/)**
-    - [Exercise 1.1 - Consume the EPM Business Partner ABAP CDS Views in SAP Data Intelligence](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex1#exercise-11---consume-the-epm-business-partner-abap-cds-views-in-sap-data-intelligence)
-    - [Exercise 1.2 - Extend the Pipeline to transfer Customer data to an S3 Object Store (Initial Load and Delta Load)](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex1#exercise-12---extend-the-pipeline-to-transfer-the-customer-data-into-an-s3-object-store-with-initial-load-and-delta-load-modes)
-    - [Exercise 1.3 - Implement a Pipeline for replication of enhanced EPM Sales Order data to an S3 Object Store](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex1#exercise-13---implement-a-pipeline-for-delta-transfer-of-enhanced-epm-sales-order-data-from-s4hana-to-an-s3-object-store)
-    - [Exercise 1.4 - Extend the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex1#exercise-14---extend-the-pipeline-for-joining-sales-order-with-customer-data-for-each-change-in-sales-orders-and-persist-results-in-s3)
-    
-- **[Exercise 2 - Triggering the execution of a function module in a remote S/4HANA system](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex2/)**
-    - [Exercise 2.1 - Making custom ABAP Operators available in SAP Data Intelligence](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex2#exercise-21---making-custom-abap-operators-available-in-sap-data-intelligence)
-    - [Exercise 2.2 - Using a custom ABAP Operator to verify your Delta Replication of EPM Sales Orders](https://github.com/SAP-samples/teched2020-DAT262/tree/main/exercises/ex2#exercise-22---using-a-custom-abap-operator-to-verify-your-delta-replication-of-epm-sales-orders)
+<br>
