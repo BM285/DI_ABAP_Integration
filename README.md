@@ -51,7 +51,7 @@ The main use cases behind this workshop are
 
 - **Demo 2 - Calling an ABAP function module in SAP S/4HANA from SAP Data Intelligence**
     - Demo 2.1 - Create a custom ABAP Operator in SAP S/4HANA
-    - Demo 2.2 - Integrate the custom ABAP Operator in a SAP Data Intelligence Pipeline
+    - Demo 2.2 - Integrate the custom ABAP Operator in SAP Data Intelligence Pipelines
     
 - **[Exercise 1 - Replicating data from S/4HANA ABAP CDS Views in SAP Data Intelligence](exercises/ex1/)**
     - [Exercise 1.1 - Create a simple ABAP CDS View in ABAP Develoment Tools (ADT)](exercises/dd1#deep-dive-11---create-a-simple-abap-cds-view-in-adt)
@@ -63,9 +63,11 @@ The main use cases behind this workshop are
     - [Exercise 1.6 - Implement a Pipeline for replication of enhanced EPM Sales Order data to an S3 Object Store](exercises/ex1#exercise-13---implement-a-pipeline-for-delta-transfer-of-enhanced-epm-sales-order-data-from-s4hana-to-an-s3-object-store)
     - [Exercise 1.7 - Extend the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3](exercises/ex1#exercise-14---extend-the-pipeline-for-joining-sales-order-with-customer-data-for-each-change-in-sales-orders-and-persist-results-in-s3)
     
-- **[Exercise 2 - Creating a Custom ABAP Operator in a remote S/4HANA system and triggering the execution of a function module call in SAP Data Intelligence](exercises/ex2/)**
-    - [Exercise 2.1 - Making custom ABAP Operators available in SAP Data Intelligence](exercises/ex2#exercise-21---making-custom-abap-operators-available-in-sap-data-intelligence)
-    - [Exercise 2.2 - Using a custom ABAP Operator to verify your Delta Replication of EPM Sales Orders](exercises/ex2#exercise-22---using-a-custom-abap-operator-to-verify-your-delta-replication-of-epm-sales-orders)
+- **[Exercise 2 - Creating a custom ABAP Operator in a remote S/4HANA system and triggering the execution of a function module call by a SAP Data Intelligence Pipeline](exercises/ex2/)**
+    - [Exercise 2.1 - Create your own custom ABAP Operator in SAP S/4HANA](exercises/dd2#deep-dive-21---create-a-custom-abap-operator-in-sap-s4hana)
+    - [Exercise 2.2 - Integrate the custom ABAP Operator in a SAP Data Intelligence Pipeline](exercises/dd2#deep-dive-22---integrate-the-custom-abap-operator-in-a-sap-data-intelligence-pipeline)
+    - [Exercise 2.3 - Making use of custom ABAP Operators in SAP Data Intelligence](exercises/ex2#exercise-21---making-custom-abap-operators-available-in-sap-data-intelligence)
+    - [Exercise 2.4 - Triggering a custom ABAP Operator to verify your Delta Replication of EPM Sales Orders](exercises/ex2#exercise-22---using-a-custom-abap-operator-to-verify-your-delta-replication-of-epm-sales-orders)
 
 <br>Here is a graphical overview about the topics and processes that we will focus on during this hands-on workshop and how they relate to each other.<br><br>
 ![](DAT262_Workshop_Scenarios.JPG)<br><br>
