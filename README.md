@@ -21,6 +21,8 @@ The requirements to follow the exercises in this repository are:
 - Basic knowhow about the usage and scope of S/4HANA 
 - General understanding of Enterprise Data Management and ETL (Extraction, Transformation, Load)
 - Basic programming skills in ABAP are of advantage
+- Locally installed Eclipse IDE with ABAP Development Tools (ADT) and training S/4HANA resource connected
+- Locally installed SAP Logon App and SAP GUI
 
 ## Deep Dive Demos and Hands-On Exercises
 
@@ -33,20 +35,23 @@ The main use cases behind this workshop are
 - Also persist the transactional data in S3, i.e for EPM Sales Order objects which are built from joins over multiple EPM tables.
 - In both cases, any single change of these data sources in the S/4HANA system has to be instantly and automatically replicated to the related files in S3.
 - Additionally, the Sales Order data have to be enriched with Customer master data, for the initial load and then on every change committed to the EPM Sales Order data in S/4HANA.
-- In order to create test changes on the EPM Sales Order data without having access to the SAP GUI in the S/4HANA system, (a variant of) the EPM Data Generator reports needs to be executed as an ABAP Function Modul call from a Data Intelligence Pipeline.<br>
+- In order to create test changes on the EPM Sales Order data without accessing the SAP GUI in the S/4HANA system, (a variant of) the EPM Data Generator reports can be executed as an ABAP Function Modul call from a Data Intelligence Pipeline.<br><br>
 
-
-The Deep Dive live demos and the hands-on Exercise contents reflect the above scenarios and provide a consecutive approach for their realization. But other than during the on-site TechEd events in the past years, it was not feasible to provide the Eclipse based ABAP Development Tools (ADT) and the SAP GUI to our participants in the this year's virtual version of the TechEd.<br><br>
-Since it is a goal of this workshop to show and get the hands on the complete end-to-end implementation processes of ABAP integration with SAP Data Intelligence, all parts of this session that require these (local) applications will be presented as **live Deep Dive demos, conducted in ADT and in SAP S/4HANA by the trainer**, the **Exercises - in opposite - are then performed by the participants** in SAP Data Intelligence and will leverage those artifacts in S/4HANA that got created during the Deep Dive demos.<br><br>
 
 - **[Overview and Getting Started](exercises/ex0/)**
-     - [Deep Dive demos vs. Exercises](exercises/ex0#deep-dive-vs-exercise-sections-in-this-document)
      - [Short introduction to the Enterprise Procurement Model (EPM) in ABAP systems](exercises/ex0#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana)
-     - [Access to the exercises' Data Intelligence environment](exercises/ex0#access-to-the-exercises-data-intelligence-environment)
+     - [Access to the exercises' Data Intelligence and S/4HANA environments](exercises/ex0#access-to-the-exercises-data-intelligence-environment)
 
-- **[Deep Dive 1 - ABAP CDS View based data extraction in SAP Data Intelligence](exercises/dd1/)**
-    - [Deep Dive 1.1 - Create a simple ABAP CDS View in ABAP Develoment Tools (ADT)](exercises/dd1#deep-dive-11---create-a-simple-abap-cds-view-in-adt)
-    - [Deep Dive 1.2 - Delta-enablement for simple ABAP CDS Views](exercises/dd1#deep-dive-12---delta-enablement-for-simple-abap-cds-views)
+- **[Demo 1 - ABAP CDS View based data extraction in SAP Data Intelligence](exercises/dd1/)**
+    - [Demo 1.1 - Create a simple ABAP CDS View in ABAP Develoment Tools (ADT)](exercises/dd1#deep-dive-11---create-a-simple-abap-cds-view-in-adt)
+    - [Demo 1.2 - Delta-enablement for simple ABAP CDS Views](exercises/dd1#deep-dive-12---delta-enablement-for-simple-abap-cds-views)
+    - [Demo 1.3 - Integrate ABAP CDS Views in SAP Data Intelligence Pipelines](exercises/dd1#deep-dive-15---integrate-abap-cds-views-in-sap-data-intelligence-pipelines)
+
+- **[Demo 2 - Calling an ABAP function module in SAP S/4HANA from SAP Data Intelligence](exercises/dd2/)**
+    - [Demo 2.1 - Create a custom ABAP Operator in SAP S/4HANA](exercises/dd2#deep-dive-21---create-a-custom-abap-operator-in-sap-s4hana)
+    - [Demo 2.2 - Integrate the custom ABAP Operator in a SAP Data Intelligence Pipeline](exercises/dd2#deep-dive-22---integrate-the-custom-abap-operator-in-a-sap-data-intelligence-pipeline)
+
+- **[Exercise 1 - ABAP CDS View based data extraction in SAP Data Intelligence](exercises/dd1/)**
     - [Deep Dive 1.3 - Create a more complex ABAP CDS View in ADT (joining multiple tables)](exercises/dd1#deep-dive-13---create-a-more-complex-abap-cds-view-in-adt-joining-multiple-tables)
     - [Deep Dive 1.4 - Delta-enablement for complex ABAP CDS Views (joining multiple tables)](exercises/dd1#deep-dive-14---delta-enablement-for-complex-abap-cds-views-joining-multiple-tables)
     - [Deep Dive 1.5 - Integrate ABAP CDS Views in SAP Data Intelligence Pipelines](exercises/dd1#deep-dive-15---integrate-abap-cds-views-in-sap-data-intelligence-pipelines)
