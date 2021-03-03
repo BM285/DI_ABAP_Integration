@@ -1,4 +1,4 @@
-# Integrating SAP S/4HANA into SAP Data Intelligence: Deep Dive and Hands On
+# Integrating SAP S/4HANA into SAP Data Intelligence:<br>Deep Dive and Hands On
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/teched2020-DAT262)](https://api.reuse.software/info/github.com/SAP-samples/teched2020-DAT262)
 
