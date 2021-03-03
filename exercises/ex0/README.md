@@ -15,11 +15,6 @@ The ABAP data provisioning gives you access to SAP S/4HANA and allows you to con
 **2. ABAP Functional Execution**<br>
 In certain scenarios, it is required to enhance the scope of a data-driven application by accessing and writing data into an SAP S/4HANA system. For example, it may be necessary to execute a function module or BAPI within a pipeline to read data into SAP Data Intelligence, post information into an ABAP-based SAP system, or trigger an execution in the remote system. If you require this type, you can create your own operator in SAP Data Intelligence that references the corresponding ABAP functionality. You can find a list of all available operators in the ABAP section of the [Repository Object Reference for SAP Data Intelligence](https://help.sap.com/doc/d131eca2150049da86c541ee0895177c/Cloud/en-US/cloud_loiod131eca2150049da86c541ee0895177c.pdf).
 
-## Deep Dive vs. Exercise sections in this document
-
-Other than during the on-site TechEd events in the past years, it was not feasible to provide the Eclipse based ABAP Development Tools (ADT) and the SAP GUI to our participants in the this year's virtual version of the TechEd. But it is a goal of this workshop to show and get the hands on the complete end-to-end implementation processes of ABAP integration with SAP Data Intelligence.<br>
-- For this reason, all parts of this session that require these (local) applications will be presented as ***live Deep Dive demos***, conducted in ADT and in SAP S/4HANA **by the trainer**,
-- The ***Exercises*** - in opposite - are then intended to be performed **by the participants** in SAP Data Intelligence and will leverage those objects in S/4HANA that got created during the Deep Dive sections.<br><br>
 
 
 ## Short introduction to the Enterprise Procurement Model (EPM) in SAP S/4HANA
@@ -53,7 +48,7 @@ The main use cases behind this workshop are
 - In order to create test changes on the EPM Sales Order data without accessing the SAP GUI in the S/4HANA system, (a variant of) the EPM Data Generator reports can be executed as an ABAP Function Modul call from a Data Intelligence Pipeline.<br>
 
 Here is a graphical overview about the topics and processes that we will focus on during this hands-on workshop and how they relate to each other.<br><br>
-![](../DAT262_Workshop_Scenarios.JPG)<br><br>
+![]((images/DAT262_Workshop_Scenarios.JPG)<br><br>
 
 ## Access to the exercises' Data Intelligence environment
 
