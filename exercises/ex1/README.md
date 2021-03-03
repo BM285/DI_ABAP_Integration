@@ -15,7 +15,9 @@ Those who are interesed in more information about Change Data Capture for ABAP C
 
 After having completed the steps in the first (ABAP) part we will have created two new delta-enabled custom ABAP CDS Views on our SAP S/4HANA system. Our goal is to leverage these CDS Views later on to access the Customer and Sales Order data of the Enterprise Procurement Model (our demo dataset) from Pipelines in SAP Data Intelligence.<br><br>
 
-We are now going to create a CDS (Core Data Services) View using ABAP Development Tools (ADT). In our specific case, it will be a CDS View to access data of the EPM table SNWD_BPA, which contains the Business Partner record set. The object names in the screenshots may be different from the names proposed in the text. Please follow the text based instructions.
+We are now going to create a CDS (Core Data Services) View using ABAP Development Tools (ADT). In our specific case, it will be a CDS View to access data of the EPM table SNWD_BPA, which contains the Business Partner record set.<br>
+
+The object names in the screenshots may be different from the names proposed in the text. **Please follow the text based instructions**.<br>
 
 1. Create a CDS View
 In the context menu of your package choose ***New*** and then choose ***Other ABAP Repository Object***.<br><br>
@@ -27,6 +29,7 @@ In the context menu of your package choose ***New*** and then choose ***Other AB
 3. Enter the following values, then choose Next.
 - Name ```Z_CDS_EPM_BUPA_TAxx``` (where TAxx is you workshop user name, e.g. Z_CDS_EPM_BUPA_TA99)
 - Description: **CDS View for EPM Business Partner Extraction**
+- Package: **$TMP**
 - Referenced Object: **SNWD_BPA**<br><br>
 ![](/exercises/dd1/images/1-003a.JPG)
 
@@ -39,7 +42,7 @@ In the context menu of your package choose ***New*** and then choose ***Other AB
 6.	The new view appears in an editor, with an error showing up because of the still missing SQL View name.<br>
 In this editor, enter value for the SQL View name in the annotation **`@AbapCatalog.sqlViewName`**, e.g. **`ZSQL_BUPA_TA99`**.<br>
 The SQL view name is the internal/technical name of the view which will be created in the database.<br>
-**`ZSQL_BUPA_TA99`** is the name of the CDS view which provides enhanced view-building capabilities in ABAP. 
+**`Z_CDS_EPM_BUPA_TA99`** is the name of the CDS view which provides enhanced view-building capabilities in ABAP. 
 You should always use the CDS view name in your ABAP applications.<br><br>
 The data source plus its fields have automatically been added to the view definition because of the reference to the data source object we gave in step 3.
 If you haven't provided that value before, you can easily search for and add your data source using the keyboard shortcut ***CTRL+SPACE***.<br><br>
@@ -49,14 +52,14 @@ If you haven't provided that value before, you can easily search for and add you
    ![](/exercises/dd1/images/1-007a.JPG)<br><br>
    The code may now look as follows:
      ```abap
-     @AbapCatalog.sqlViewName: 'Z_SQL_EPM_BUPA'
+     @AbapCatalog.sqlViewName: 'ZSQL_BUPA_TA99'
      @AbapCatalog.compiler.compareFilter: true
      @AbapCatalog.preserveKey: true
      @ClientHandling.type: #CLIENT_DEPENDENT
      @AccessControl.authorizationCheck: #CHECK
      @EndUserText.label: 'CDS View for EPM Business Partner Extraction'
      
-     define view Z_CDS_EPM_BUPA
+     define view Z_CDS_EPM_BUPA_TA99
          as select from SNWD_BPA
          
      {
@@ -89,7 +92,7 @@ We have now successfully created the first simple CDS View in SAP S/4HANA. In th
 
 Extraction and Delta enablement for simple ABAP CDS Views is pretty easy! The only step to do is adding the `@Analytics` annotation to the view that sets the enabled flag and the change data capture approach.<br>
 
-Let's continue with the simple ABAP CDS View that we have implemented in the previous section and introduce the CDC delta for **`Z_CDS_EPM_BUPA`**.<br><br>
+Let's continue with the simple ABAP CDS View that we have implemented in the previous section and introduce the CDC delta for **`Z_CDS_EPM_BUPA_TA99`**.<br><br>
 
 1. In ADT's Project Explorer, we navigate to our package and then to ***Core Data Services --> Data Definitions*** and double-click on the ABAP CDS View `Z_CDS_EPM_BUPA`.<br><br>
 ![](/exercises/dd1/images/dd1-010a.JPG)<br><br>
@@ -129,6 +132,7 @@ In the context menu of your package choose ***New*** and then choose ***Other AB
 3. Enter the following values, then choose Next.
 - Name, e.g. ```Z_CDS_EPM_SO_TA99``` (use your individual workshop user after the last underscore)
 - Description: **CDS View for EPM Sales Order object extraction**
+- Package: **$TMP**
 - Referenced Object: **SNWD_SO**<br><br>
 ![](/exercises/dd1/images/dd1-012a.JPG)
 
@@ -169,14 +173,14 @@ If you haven't provided that value before, you can easily search for and add you
    ![](/exercises/dd1/images/dd1-015a.JPG)<br><br>
    The ABAP CDS View may now look as follows:
      ```abap
-     @AbapCatalog.sqlViewName: 'Z_SQL_EPM_SO'
+     @AbapCatalog.sqlViewName: 'ZSQL_SO_TA99'
      @AbapCatalog.compiler.compareFilter: true
      @AbapCatalog.preserveKey: true
      @ClientHandling.type: #CLIENT_DEPENDENT
      @AccessControl.authorizationCheck: #CHECK
      @EndUserText.label: 'CDS View for EPM Sales Order object extraction'
      
-     define view Z_CDS_EPM_SO as select from snwd_so as so
+     define view Z_CDS_EPM_SO_TA99 as select from snwd_so as so
          left outer join snwd_so_i as item on so.node_key = item.parent_key
          left outer join snwd_pd as prod on item.product_guid = prod.node_key
          left outer join snwd_texts as text on prod.name_guid = text.parent_key and text.language = 'E'
