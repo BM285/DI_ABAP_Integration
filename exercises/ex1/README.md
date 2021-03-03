@@ -1,6 +1,6 @@
 # Exercise 1 - Replicating data from ABAP CDS Views in SAP Data Intelligence
 
-## Some Key Words
+## Some Key Words upfront
 
 **ABAP Development Tools (ADT)**, formerly known as "ABAP in Eclipse", is the integrated ABAP development environment built on top of the Eclipse platform. Its main objective is to support developers in today’s increasingly complex development environments by offering state-of the art ABAP development tools. You can find more information about ADT **[here](https://tools.hana.ondemand.com/#abap)**.<br>
 <br>
