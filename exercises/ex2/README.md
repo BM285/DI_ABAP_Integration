@@ -73,7 +73,7 @@ Here is a step-by-step guideline for creating a custom ABAP Operator. In the spe
 7. Now assign a package or choose 'Local Object', then ***Save*** (![](/exercises/dd2/images/Save.JPG)).<br><br>
 ![](/exercises/dd2/images/dd2-008a.JPG)<br>
 
-8. On the next screen (Enhancement Implementation), click on ***Implementing Class*** on the left side, then double click on the name of your Implementing Class, in this case `ZCL_DHAPE_OPER_REVERSE_STR`.<br><br>
+8. On the next screen (Enhancement Implementation), click on ***Implementing Class*** on the left side, then double click on the name of your Implementing Class, in this case `ZCL_DHAPE_OPER_REV_STR_TA99`.<br><br>
 ![](/exercises/dd2/images/dd2-009b.JPG)<br>
 
 9. This opens the Class Builder (`SE24`). Double click on the `GET_INFO` method in oder to assign the input and output ports of the ABAP Operator. Parameters are not needed in our use case.<br><br>
