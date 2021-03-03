@@ -53,13 +53,17 @@ Here is a graphical overview about the topics and processes that we will focus o
 
 ## Access to the exercises' Data Intelligence environment
 
-All participants are requested to register for a **individual user name and password** on the workshop specific **SAP Data Intelligence tenant**.<br>
-For so doing, please follow the link to the **[Data Intelligence User Registration Tool](https://register.cfapps.eu10.hana.ondemand.com/)**.<br>
+All participants should have received an Excel spreadsheet with a mapping of the SAP User to the Workshop user and the related credentials for the S/4HANA and Data Intelligence system.<br>
 
-- In the **Workshop selection list**, choose the hands-on session you are registered for:
-     - "**DAT262_1** - Integrating SAP S/4HANA into SAP Data Intelligence - Deep Dive and Hands-On"<br>for the session on **Tuesday, December 8th 2020, from 08:50pm to 10:50pm UTC**
-     - "**DAT262_2** - Integrating SAP S/4HANA into SAP Data Intelligence - Deep Dive and Hands-On"<br>for the session on **Wednesday, December 9th 2020, from 08:50am to 10:50am UTC**
-- Then enter your name and press submit. Remember the credentials which are being displayed for later usage!
+The Eclipse based ABAP Development Tools (ADT) can be setup as follows
+- Add an entry for an user specific application server to your list of connections in the SAP Logon application.<br>
+Use the following settings:
+   - Description:        Training S/4HANA Integration with Data Intelligence (example)
+   - System ID:	     S4H
+   - Instance Number:	00
+   - Application Server: 18.158.247.81
+- Initially log on to the S/4HANA system and change your password, when prompted. Remember the password for later usage.
+- In ADT, add a new ABAP Project and select the above System Connection and logon to Client 000 with your renewed S/4HANA credentials.
 <br>
 
 >***Important Note***
