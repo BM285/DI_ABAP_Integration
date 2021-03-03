@@ -55,7 +55,7 @@ Here is a graphical overview about the topics and processes that we will focus o
 
 All participants should have received an Excel spreadsheet with a mapping of the SAP User to the Workshop user and the related credentials for the S/4HANA and Data Intelligence system.<br>
 
-The Eclipse based ABAP Development Tools (ADT) can be setup as follows
+The Eclipse based **ABAP Development Tools (ADT)** can be setup as follows
 - Add an entry for an user specific application server to your list of connections in the SAP Logon application.<br>
 Use the following settings:
    - Description:        Training S/4HANA Integration with Data Intelligence (example)
@@ -66,21 +66,10 @@ Use the following settings:
 - In ADT, add a new ABAP Project and select the above System Connection and logon to Client 000 with your renewed S/4HANA credentials.
 <br>
 
->***Important Note***
->The user name registration service for the workshop's Data Intelligence system is available during the following timeslots
->- ***DAT262_1***: On Tuesday, December 8th 2020, from 11:30am UTC to 11:00pm UTC
->- ***DAT262_2***: From Tuesday, December 8th 2020, 02:00pm UTC to Wednesday, December 9th 2020,11:00am UTC
-<br>
-
-![](images/DI_User_Registration_Tool.JPG)
-
-
-After you have successfully obtained your credentials for the SAP Data Intelligence system, you can log on as follows:
-- in a Chrome or Firefox Browser, open the link to: **https://vsystem.ingress.dh-6srbrjhsl.dh-canary.shoot.live.k8s-hana.ondemand.com/login/?tenant=dat262**
-- the tenant name is ***dat262***. User credential as received from the user registration service described above
-- the logon process is also introduced step-by-step in the exercise sections.
-
-The SAP Data Intelligence environment that is assigned to this hands-on workshop already contains a Connection of type RFC to the backend SAP S/4HANA system set up (see also in DI Connection Management). In the Pipelines that you create in SAP Data Intelligence, you can leverage this existing RFC Connection and find and integrate the provided CDS Views and custom ABAP Operators that were implemented during the Deep Dive parts of the workshop.<br><br>
+You can log on as follows to the **SAP Data Intelligence (DI)** system
+- In a Chrome Browser, open the link to: https://vsystem.ingress.dh-3s98cuwz0.dh-canary.shoot.live.k8s-hana.ondemand.com/app/datahub-app-launchpad
+- Logon to tenant ‘workshop’ and use the credentials of the Excel user mapping list that you have received along with the workshop invitation.
+- The SAP Data Intelligence environment that is assigned to this hands-on workshop already contains a Connection of type RFC to the backend SAP S/4HANA system set up (see also in DI Connection Management). In the Pipelines that you create in SAP Data Intelligence, you can leverage this existing RFC Connection and integrate the CDS Views and custom ABAP Operators that were implemented during the Exerrcise parts of the workshop.<br><br>
 
 ## Next Step
 
