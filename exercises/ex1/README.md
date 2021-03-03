@@ -1,6 +1,6 @@
 # Exercise 1 - Replicating data from ABAP CDS Views in SAP Data Intelligence
 
-## Key Words
+## Some Key Words
 
 **ABAP Development Tools (ADT)**, formerly known as "ABAP in Eclipse", is the integrated ABAP development environment built on top of the Eclipse platform. Its main objective is to support developers in today’s increasingly complex development environments by offering state-of the art ABAP development tools. You can find more information about ADT **[here](https://tools.hana.ondemand.com/#abap)**.<br>
 <br>
@@ -11,11 +11,22 @@ Starting with SAP S/4HANA Cloud 1905 and SAP S/4HANA 1909 FPS01 (on-premise), **
 
 Those who are interesed in more information about Change Data Capture for ABAP CDS Views may like to read the related part of the **[Data Intelligence - ABAP Integration Guide](https://help.sap.com/viewer/3a65df0ce7cd40d3a61225b7d3c86703/Cloud/en-US/55b2a17f987744cba62903e97dd99aae.html)** or the blog **[CDS based data extraction – Part II Delta Handling](https://blogs.sap.com/2019/12/16/cds-based-data-extraction-part-ii-delta-handling/)**.<br><br>
 
-## Exercise 1.1 - Consume the EPM Business Partner ABAP CDS Views in SAP Data Intelligence
+## Exercise 1.1 - Create a simple ABAP CDS View in ABAP Develoment Tools (ADT)
 
-After having completed the steps in the first (ABAP) part  we will have created two new delta-enabled custom ABAP CDS Views on our SAP S/4HANA system. Our goal is to leverage these CDS Views later to access the Customer and Sales Order data of the Enterprise Procurement Model (our demo dataset) from Pipelines in SAP Data Intelligence.<br><br>
+After having completed the steps in the first (ABAP) part  we will have created two new delta-enabled custom ABAP CDS Views on our SAP S/4HANA system. Our goal is to leverage these CDS Views later on to access the Customer and Sales Order data of the Enterprise Procurement Model (our demo dataset) from Pipelines in SAP Data Intelligence.<br><br>
 
-In this exercise, we will leverage in Data Intelligence Pipelines those ABAP CDS Views that got created during the first Deep Dive demo in the connected S/4HANA system.<br><br>
+
+## Exercise 1.2 - Delta-enablement for simple ABAP CDS Views
+
+## Exercise 1.3 - Creating a more complex ABAP CDS View in ADT (joining multiple tables)
+
+## Exercise 1.4 - Delta-enablement for a complex ABAP CDS Views (joining multiple tables)
+
+In the following exercise sections, we will now leverage the new ABAP CDS Views as a source for data processing in Data Intelligence Pipelines.<br><br>
+
+## Exercise 1.5 - Consuming the EPM Business Partner ABAP CDS Views in SAP Data Intelligence
+
+
 The use case is
 - to obtain the Business Partner master data in S/4HANA's demo application **Enterprise Procurement Model (EPM)** and make the records available for the corporate Data Analysts in an S3 object store.
 - to also persist the transactional data for EPM Sales Orders in S3.
@@ -24,7 +35,6 @@ The use case is
 
 (As a reminder: You can recap the relationship between the relevant EPM table entities that are used in this exercise [here](../ex0#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana))<br>
 
-## Exercise 1.1 - Consume the EPM Business Partner ABAP CDS Views in SAP Data Intelligence
 
 After completing these steps you will have created a Pipeline that reads EPM Customer data from an ABAP CDS View in S/4HANA and displays it in a Terminal UI.
 
