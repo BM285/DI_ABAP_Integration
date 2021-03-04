@@ -43,10 +43,10 @@ The requirements to follow the exercises in this repository are:
     
 - **[Exercise 1 - Replicating data from S/4HANA ABAP CDS Views in SAP Data Intelligence](exercises/ex1/)**
     - [Some Key Words upfront ](exercises/ex1/README.md#some-key-words-upfront)
-    - [Exercise 1.1 - Create a simple ABAP CDS View in ABAP Develoment Tools (ADT)](exercises/ex1/README.md#exercise-11---create-a-simple-abap-cds-view-in-abap-develoment-tools-adt)
+    - [Exercise 1.1 - Creating a simple ABAP CDS View in ABAP Develoment Tools (ADT)](exercises/ex1/README.md#exercise-11---creating-a-simple-abap-cds-view-in-abap-develoment-tools-adt)
     - [Exercise 1.2 - Extraction and Delta enablement for simple ABAP CDS Views](exercises/ex1/README.md#exercise-12---extraction-and-delta-enablement-for-simple-abap-cds-views)
-    - [Exercise 1.3 - Create a more complex ABAP CDS View in ADT (joining multiple tables)](exercises/ex1/README.md#exercise-13---creating-a-more-complex-abap-cds-view-in-adt-joining-multiple-tables)
-    - [Exercise 1.4 - Delta-enablement for a complex ABAP CDS Views (joining multiple tables)](exercises/ex1/README.md#exercise-14---extraction-and-delta-enablement-for-a-complex-abap-cds-views-joining-multiple-tables)
+    - [Exercise 1.3 - Creating a more complex ABAP CDS View in ADT (joining multiple tables)](exercises/ex1/README.md#exercise-13---creating-a-more-complex-abap-cds-view-in-adt-joining-multiple-tables)
+    - [Exercise 1.4 - Extraction and Delta enablement for more complex ABAP CDS Views (joining multiple tables)](exercises/ex1/README.md#exercise-14---extraction-and-delta-enablement-for-a-complex-abap-cds-views-joining-multiple-tables)
     - [Exercise 1.5 - Consume the EPM Business Partner ABAP CDS Views in SAP Data Intelligence](exercises/ex1/README.md#exercise-15---consuming-the-epm-business-partner-abap-cds-views-in-sap-data-intelligence)
     - [Exercise 1.6 - Extend the Pipeline to transfer Customer data to an S3 Object Store (Initial Load and Delta Load)](exercises/ex1/README.md#exercise-16---extend-the-pipeline-to-transfer-the-customer-data-into-an-s3-object-store-with-initial-load-and-delta-load-modes)
     - [Exercise 1.7 - Implement a Pipeline for replication of enhanced EPM Sales Order data to an S3 Object Store](exercises/ex1/README.md#exercise-17---implement-a-pipeline-for-delta-transfer-of-enhanced-epm-sales-order-data-from-s4hana-to-an-s3-object-store)
