@@ -212,7 +212,7 @@ If you haven't provided that value before, you can easily search for and add you
 11. Verify the results in the ***Data Preview*** by pressing ***F8***. Our CDS View data preview should look like this:<br><br>
 ![](/exercises/dd1/images/dd1-016a.JPG)<br><br>
 
-## Exercise 1.4 - Extraction and Delta enablement for a complex ABAP CDS Views (joining multiple tables)
+## Exercise 1.4 - Extraction and Delta enablement for more complex ABAP CDS Views (joining multiple tables)
 
 The main task for exposing a CDS view with CDC delta method is to provide the mapping information between the fields of a CDS view and the key fields of the underlying tables. The mapping is necessary to enable a comprehensive logging for each of the underlying tables and subsequently a consistent selection/(re-)construction of records to be provided for extraction. This means the framework needs to know which tables to log, i.e. monitor for record changes.
 
