@@ -57,9 +57,7 @@ The requirements to follow the exercises in this repository are:
     - [Exercise 2.2 - Integrating the custom ABAP Operator in a SAP Data Intelligence Pipeline](exercises/ex2/README.md#exercise-22---integrating-the-custom-abap-operator-in-a-sap-data-intelligence-pipeline)
     - [Exercise 2.3 - Making use of custom ABAP Operators in SAP Data Intelligence](exercises/ex2/README.md#exercise-23---making-use-of-custom-abap-operators-in-sap-data-intelligence-for-abap-report-execution)
     - [Exercise 2.4 - Triggering a custom ABAP Operator to verify your Delta Replication of EPM Sales Orders](exercises/ex2/README.md#exercise-24---triggering-a-custom-abap-operator-to-verify-your-delta-replication-of-epm-sales-orders)
-
-<br>Here is a graphical overview about the topics and processes that we will focus on during this hands-on workshop and how they relate to each other.<br><br>
-![](DAT262_Workshop_Scenarios.JPG)<br><br>
+<br><br>
 
 ## How to obtain support
 
