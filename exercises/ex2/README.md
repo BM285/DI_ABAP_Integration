@@ -244,7 +244,7 @@ The integration of ABAP Operators is done via Pipelines in the SAP Data Intelige
 4.	In the configuration panel on the right side, select the ***ABAP Connection*** (RFC or Websocket RFC connection) to the SAP S/4HANA system that provides the ABAP Operator. If done, click on the selection button of the field for the ***ABAP Operator***.<br><br>
 ![](/exercises/dd2/images/dd2-019b.JPG)<br><br>
 
-5.	From the pop-up window, select the custom ABAP Operator that you want to call from the Pipeline. In our case, it's the ABAP Operator that receives a string, reverses it, and sends it back to the client. Hence, choose ***Operator Class: String Reversion*** and click ***OK***<br><br>
+5.	From the pop-up window, select the custom ABAP Operator that you want to call from the Pipeline. In our case, it's the ABAP Operator that receives a string, reverses it, and sends it back to the client. Hence, choose ***Operator Class: String Reversion for User TAxx*** (e.g. TA99) and click ***OK***<br><br>
 ![](/exercises/dd2/images/dd2-020b.JPG)<br><br>
 
 6.	As you can see, the ABAP Operator node in the Pipeline canvas gets automatically updated with the operator's name in S/4HANA and the ports that we have defined in the previous section of this Deep Dive demo. (The `GET_INFO( )`method in our operator's ABAP class provides the corresponding meta information.)<br><br>
