@@ -353,7 +353,7 @@ For the integration of ABAP CDS Views of S/4HANA, SAP Data Intelligence provides
 **Congratulations!** You have now successfully implemented a Pipeline that consumes an ABAP CDS View from the connected SAP S/4HANA system.
 As a next step, you will persist the EPM Customer master data in an S3 Object Store and switch from the Initial Load to a Delta Load transfer mode.
 
-## Exercise 1.6 - Extend the Pipeline to transfer the Customer data into an S3 Object Store with Initial Load and Delta Load modes
+## Exercise 1.6 - Extending the Pipeline to transfer the Customer data into an S3 Object Store with Initial Load and Delta Load modes
 
 After completing the following steps you will have extended the Data Intelligence Pipeline with an additional persistency for the data in S3. And in order to also obtain any deltas that have occurred on the S/4HANA EPM Business Partner table `SNWD_BPA`, the transfer mode will get changed to Delta Load after initially loading the data into a file in S3.
 
@@ -434,7 +434,7 @@ In order to fetch any changes in S/4HANA on the Business Partner table `SNWD_BPA
 
 **Very well done!** You have implemented a Pipeline that extracts Initial Load and Delta data fron an ABAP CDS View in S/4HANA and have interlinked it with a non-SAP target storage in S3.
 
-## Exercise 1.7 - Implement a Pipeline for delta transfer of enhanced EPM Sales Order data from S/4HANA to an S3 Object Store
+## Exercise 1.7 - Implementing a Pipeline for delta transfer of enhanced EPM Sales Order data from S/4HANA to an S3 Object Store
 
 In the next section, we'll also take care for the Sales Order transaction data from EPM and will right away establish a replication (initial load plus following delta processing) transfer mode.
 
@@ -526,7 +526,7 @@ In the next section, we'll also take care for the Sales Order transaction data f
 As a next step, you will enrich the Sales Order data with some Customer Details (Name and Legal Form) during the Replication process.
 
 
-## Exercise 1.8 - Extend the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3
+## Exercise 1.8 - Extending the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3
 
 In this last part of the S/4HANA ABAP CDS View intergration exercise, you will establish a Pipeline that replicated the Sales Order data from the delta-enabled ABA CDS View in S/4HANA and joins it with some of the details that you have replicated from the Customer master data, i.e. company name and legal form.
 
