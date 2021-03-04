@@ -28,8 +28,8 @@ The requirements to follow the exercises in this repository are:
 ### Agenda
 
 - **[Overview and Getting Started](exercises/ex0/)**
-     - [Short introduction to the Enterprise Procurement Model (EPM) in ABAP systems](exercises/ex0/README.md#overview-and-getting-started)
-     - [Introduction to the workshop scenarios (Demos and Exercises)](exercises/ex0/README.md#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana)
+     - [Short introduction to the Enterprise Procurement Model (EPM) in ABAP systems](exercises/ex0/README.md#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana)
+     - [Introduction to the workshop scenarios (Demos and Exercises)](exercises/ex0/README.md#exercise-scenarios)
      - [Access to the Data Intelligence and S/4HANA environments](exercises/ex0/README.md#access-to-the-exercises-data-intelligence-environment)
 
 - **Demo 1 - ABAP CDS View based data extraction in SAP Data Intelligence**
