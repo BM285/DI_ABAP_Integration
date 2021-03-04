@@ -28,9 +28,9 @@ The requirements to follow the exercises in this repository are:
 ### Agenda
 
 - **[Overview and Getting Started](exercises/ex0/)**
-     - [Short introduction to the Enterprise Procurement Model (EPM) in ABAP systems](exercises/ex0#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana)
-     - [Introduction to the workshop scenarios (Demos and Exercises)](exercises/ex0#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana)
-     - [Access to the Data Intelligence and S/4HANA environments](exercises/ex0#access-to-the-exercises-data-intelligence-environment)
+     - [Short introduction to the Enterprise Procurement Model (EPM) in ABAP systems](exercises/ex0/README.md#overview-and-getting-started)
+     - [Introduction to the workshop scenarios (Demos and Exercises)](exercises/ex0/README.md#short-introduction-to-the-enterprise-procurement-model-epm-in-sap-s4hana)
+     - [Access to the Data Intelligence and S/4HANA environments](exercises/ex0/README.md#access-to-the-exercises-data-intelligence-environment)
 
 - **Demo 1 - ABAP CDS View based data extraction in SAP Data Intelligence**
     - Demo 1.1 - Creating ABAP CDS Views in ABAP Develoment Tools (ADT)
@@ -53,10 +53,10 @@ The requirements to follow the exercises in this repository are:
     - [Exercise 1.8 - Extending the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3](exercises/ex1/README.md#exercise-18---extending-the-pipeline-for-joining-sales-order-with-customer-data-for-each-change-in-sales-orders-and-persist-results-in-s3)
     
 - **[Exercise 2 - Creating a custom ABAP Operator in a remote S/4HANA system and triggering the execution of a function module call by a SAP Data Intelligence Pipeline](exercises/ex2/)**
-    - [Exercise 2.1 - Creating your own custom ABAP Operator in SAP S/4HANA](exercises/dd2#deep-dive-21---create-a-custom-abap-operator-in-sap-s4hana)
-    - [Exercise 2.2 - Integrating the custom ABAP Operator in a SAP Data Intelligence Pipeline](exercises/dd2#deep-dive-22---integrate-the-custom-abap-operator-in-a-sap-data-intelligence-pipeline)
-    - [Exercise 2.3 - Making use of custom ABAP Operators in SAP Data Intelligence](exercises/ex2#exercise-21---making-custom-abap-operators-available-in-sap-data-intelligence)
-    - [Exercise 2.4 - Triggering a custom ABAP Operator to verify your Delta Replication of EPM Sales Orders](exercises/ex2#exercise-22---using-a-custom-abap-operator-to-verify-your-delta-replication-of-epm-sales-orders)
+    - [Exercise 2.1 - Creating your own custom ABAP Operator in SAP S/4HANA](exercises/ex2/README.md#exercise-21---creating-your-own-custom-abap-operator-in-sap-s4hana)
+    - [Exercise 2.2 - Integrating the custom ABAP Operator in a SAP Data Intelligence Pipeline](exercises/ex2/README.md#exercise-22---integrating-the-custom-abap-operator-in-a-sap-data-intelligence-pipeline)
+    - [Exercise 2.3 - Making use of custom ABAP Operators in SAP Data Intelligence](exercises/ex2/README.md#exercise-23---making-use-of-custom-abap-operators-in-sap-data-intelligence-for-abap-report-execution)
+    - [Exercise 2.4 - Triggering a custom ABAP Operator to verify your Delta Replication of EPM Sales Orders](exercises/ex2/README.md#exercise-24---triggering-a-custom-abap-operator-to-verify-your-delta-replication-of-epm-sales-orders)
 
 <br>Here is a graphical overview about the topics and processes that we will focus on during this hands-on workshop and how they relate to each other.<br><br>
 ![](DAT262_Workshop_Scenarios.JPG)<br><br>
