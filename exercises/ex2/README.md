@@ -307,9 +307,9 @@ You are asked to leverage this Custom ABAP Operator in this exercise with the go
 After completing these steps you will have created a Pipeline that triggers the execution of a report variant in the connected S/4HANA for EPM data generation.
 
 1. Log on to SAP Data Intelligence and enter the Launchpad application. Then start the ***Modeler*** application.
-   - Follow the link to your assigned Data Intelligence instance, e.g. https://vsystem.ingress.xyz.dhaas-live.shoot.live.k8s-hana.ondemand.com/app/datahub-app-launchpad/.
+   - Follow the link to your assigned Data Intelligence instance: https://vsystem.ingress.dh-3s98cuwz0.dh-canary.shoot.live.k8s-hana.ondemand.com/app/datahub-app-launchpad/.
    - The tenant name is **"workshop"**.
-   - In the next pop-up window, enter your assigned user name (e.g. ***"TA99"***) and your individual password received from the DI user registration.<br><br>
+   - In the next pop-up window, enter your assigned user name (e.g. ***"TA99"***) and your individual password received from user mapping list.<br><br>
    ![](/exercises/ex2/images/ex1-002c.JPG)<br><br>
    - From the Launchpad, start the ***Modeler*** application by clicking on the corresponding tile.<br><br>
    ![](/exercises/ex2/images/ex2-003b.JPG)<br><br>
