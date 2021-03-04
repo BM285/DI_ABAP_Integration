@@ -42,14 +42,15 @@ The requirements to follow the exercises in this repository are:
     - Demo 2.2 - Integrate the custom ABAP Operator in SAP Data Intelligence Pipelines
     
 - **[Exercise 1 - Replicating data from S/4HANA ABAP CDS Views in SAP Data Intelligence](exercises/ex1/)**
-    - [Exercise 1.1 - Create a simple ABAP CDS View in ABAP Develoment Tools (ADT)](exercises/dd1#deep-dive-11---create-a-simple-abap-cds-view-in-adt)
-    - [Exercise 1.2 - Delta-enablement for simple ABAP CDS Views](exercises/dd1#deep-dive-12---delta-enablement-for-simple-abap-cds-views)
-    - [Exercise 1.3 - Create a more complex ABAP CDS View in ADT (joining multiple tables)](exercises/dd1#deep-dive-13---create-a-more-complex-abap-cds-view-in-adt-joining-multiple-tables)
-    - [Exercise 1.4 - Delta-enablement for a complex ABAP CDS Views (joining multiple tables)](exercises/dd1#deep-dive-14---delta-enablement-for-complex-abap-cds-views-joining-multiple-tables)
-    - [Exercise 1.5 - Consume the EPM Business Partner ABAP CDS Views in SAP Data Intelligence](exercises/ex1#exercise-11---consume-the-epm-business-partner-abap-cds-views-in-sap-data-intelligence)
-    - [Exercise 1.5 - Extend the Pipeline to transfer Customer data to an S3 Object Store (Initial Load and Delta Load)](exercises/ex1#exercise-12---extend-the-pipeline-to-transfer-the-customer-data-into-an-s3-object-store-with-initial-load-and-delta-load-modes)
-    - [Exercise 1.6 - Implement a Pipeline for replication of enhanced EPM Sales Order data to an S3 Object Store](exercises/ex1#exercise-13---implement-a-pipeline-for-delta-transfer-of-enhanced-epm-sales-order-data-from-s4hana-to-an-s3-object-store)
-    - [Exercise 1.7 - Extend the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3](exercises/ex1#exercise-14---extend-the-pipeline-for-joining-sales-order-with-customer-data-for-each-change-in-sales-orders-and-persist-results-in-s3)
+    - [Some Key Words upfront ](exercises/ex1/README.md#some-key-words-upfront)
+    - [Exercise 1.1 - Create a simple ABAP CDS View in ABAP Develoment Tools (ADT)](exercises/ex1/README.md#exercise-11---create-a-simple-abap-cds-view-in-abap-develoment-tools-adt)
+    - [Exercise 1.2 - Delta-enablement for simple ABAP CDS Views](exercises/ex1/README.md#exercise-12---extraction-and-delta-enablement-for-simple-abap-cds-views)
+    - [Exercise 1.3 - Create a more complex ABAP CDS View in ADT (joining multiple tables)](exercises/ex1/README.md#exercise-13---creating-a-more-complex-abap-cds-view-in-adt-joining-multiple-tables)
+    - [Exercise 1.4 - Delta-enablement for a complex ABAP CDS Views (joining multiple tables)](exercises/ex1/README.md#exercise-14---extraction-and-delta-enablement-for-a-complex-abap-cds-views-joining-multiple-tables)
+    - [Exercise 1.5 - Consume the EPM Business Partner ABAP CDS Views in SAP Data Intelligence](exercises/ex1/README.md#exercise-15---consuming-the-epm-business-partner-abap-cds-views-in-sap-data-intelligence)
+    - [Exercise 1.6 - Extend the Pipeline to transfer Customer data to an S3 Object Store (Initial Load and Delta Load)](exercises/ex1/README.md#exercise-16---extend-the-pipeline-to-transfer-the-customer-data-into-an-s3-object-store-with-initial-load-and-delta-load-modes)
+    - [Exercise 1.7 - Implement a Pipeline for replication of enhanced EPM Sales Order data to an S3 Object Store](exercises/ex1/README.md#exercise-17---implement-a-pipeline-for-delta-transfer-of-enhanced-epm-sales-order-data-from-s4hana-to-an-s3-object-store)
+    - [Exercise 1.8 - Extend the Pipeline for joining Sales Order with Customer data for each change in Sales Orders and persist results in S3](exercises/ex1/README.md#exercise-18---extend-the-pipeline-for-joining-sales-order-with-customer-data-for-each-change-in-sales-orders-and-persist-results-in-s3)
     
 - **[Exercise 2 - Creating a custom ABAP Operator in a remote S/4HANA system and triggering the execution of a function module call by a SAP Data Intelligence Pipeline](exercises/ex2/)**
     - [Exercise 2.1 - Create your own custom ABAP Operator in SAP S/4HANA](exercises/dd2#deep-dive-21---create-a-custom-abap-operator-in-sap-s4hana)
