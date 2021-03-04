@@ -42,7 +42,7 @@ The BAdI implementation consists of a class with **two methods** that must be re
 - ON_SUSPEND: Called at least once, after the graph is stopped or suspended
 - ON_STOP: Called once, after the graph is stopped
 
-## Exercise 2.1 - Create your own custom ABAP Operator in SAP S/4HANA
+## Exercise 2.1 - Creating your own custom ABAP Operator in SAP S/4HANA
 
 Like the CDS Views, custom ABAP Operators could also be manually implemented in S/4HANA (Class Builder) or in the ABAP Development Tools (ADT) on Eclipse.<br>
 However, in order to reduce manual activities to a minimum, there is a framework available that supports you in the creation of all artifacts in the S/4HANA ABAP backend that are required for your own ABAP operator. That framework consists of two reports that must be executed in sequence:
@@ -225,7 +225,7 @@ ENDCLASS.
 
 The ABAP Operator implementation is now finished. The operator can immediately be used in SAP Data Intelligence Pipeline. The next section of this Deep Dive demo describes how this is done.<br><br>
 
-## Exercise 2.2 - Integrate the custom ABAP Operator in a SAP Data Intelligence Pipeline
+## Exercise 2.2 - Integrating the custom ABAP Operator in a SAP Data Intelligence Pipeline
 
 SAP Data Intelligence provides multiple Operator shells for the integration with ABAP Operators in SAP S/4HANA. On the one hand, there are the Operator shells that point to pre-defined ABAP Operators in ABAP systems, such as ABAP CDS Reader, ODP Reader, SLT Connector, Cluster Table Splitter (for Business Suite systems), or the ABAP Converter. On the other hand, you can also trigger custom ABAP Operators by using the "Custom ABAP Operator" shell.<br>
 Technically, the approaches for calling function modules in S/4HANA are the same in both cases. The only difference is the namespace under which these ABAP Operators are maintained and selected. While the pre-built Operators belong to the namespace `com.sap.`, custom ABAP Operators are assigned to `customer`.
